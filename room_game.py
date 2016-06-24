@@ -1,4 +1,4 @@
-from room_game import building
+import building
 def game_circle():
    new_room = True
    current_room = building.create_rooms()
@@ -6,6 +6,7 @@ def game_circle():
        if new_room:
            print("Вы находитесь в комнате", current_room.name)
            print(current_room.description)
+           print("Введите команду")
        a = input(":")
        if a.strip() == "quit":
            break

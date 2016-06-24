@@ -1,4 +1,5 @@
-from room_game.description import*
+#from room_game.description import*
+import description
 
 class Room:
     # name=""
@@ -24,11 +25,11 @@ class Room:
 
 
 def create_rooms():
-    room1 = Room("Столовая", ROOM_DESCRIPTION["Столовая"])
-    room2 = Room("Холл", ROOM_DESCRIPTION["Холл"])
-    room3 = Room("Спальня", ROOM_DESCRIPTION["Спальня"])
-    room4 = Room("Кухня", ROOM_DESCRIPTION["Кухня"])
-    room5 = Room("Коридор", ROOM_DESCRIPTION["Коридор"])
+    room1 = Room("Столовая", description.ROOM_DESCRIPTION["Столовая"])
+    room2 = Room("Холл", description.ROOM_DESCRIPTION["Холл"])
+    room3 = Room("Спальня", description.ROOM_DESCRIPTION["Спальня"])
+    room4 = Room("Кухня", description.ROOM_DESCRIPTION["Кухня"])
+    room5 = Room("Коридор", description.ROOM_DESCRIPTION["Коридор"])
     room1.bind("west", room4)
     room1.bind("north",room2)
     room5.bind("east",room3)
