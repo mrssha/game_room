@@ -6,8 +6,7 @@ def game_circle():
        if new_room:
            print("Вы находитесь в комнате", current_room.name)
            print(current_room.description)
-           print("Введите команду")
-       a = input(":")
+       a = input("Введите команду:")
        if a.strip() == "quit":
            break
        result = building.execute_command(a.strip(),current_room)
@@ -17,5 +16,5 @@ def game_circle():
 
 
 
-a = print("Введите команду, для выхода наберить quit")
+a = print("Введите команду, для выхода наберите quit")
 game_circle()

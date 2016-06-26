@@ -1,18 +1,26 @@
-from room_game.description import*
+import description
 
 
-class Candle:
-    def __init__(self, description):
+BASKET = {}
+
+class Subject:
+    pass
+
+class Candle(Subject):
+    def __init__(self, name, description):
+        self.name = name
         self.description = description
-        self.prop = ["fireable"]
+        self.prop = ["fireable", "takeable"]
 
-class Match:
-    def __init__(self, description):
+class Match(Subject):
+    def __init__(self, name, description):
+        self.name = name
         self.description = description
-        self.prop = ["fire"]
+        self.prop = ["fire", "takeable"]
 
-class Gobelin:
-    def __init__(self, description):
+class Gobelin(Subject):
+    def __init__(self, name, description):
+        self.name = name
         self.description = description
         self.prop = ["fireable"]
 
@@ -28,20 +36,33 @@ def act_fire(subj1,subj2):
     return [subj1,subj2]
 
 
+def create_subject(name, description):
+   if name=="Свеча":
+       return Candle(name, description)
+   if name=="Спичка":
+       return Match(name, description)
+   if name=="Гобелен":
+       return Gobelin(name, description)
+
+match1 = create_subject("Спичка", description.SUBJECT_DESCRIPTION["Спичка"])
+candle1 = create_subject("Свеча", description.SUBJECT_DESCRIPTION["Свеча"])
+gobelin1= create_subject("Гобелен", description.SUBJECT_DESCRIPTION["Гобелен"])
+
+
+"""
+def act_fire(subj1,subj2):
+    if "fireable" in subj1.prop and "fire" in subj2.prop:
+        subj1.description = "Горящая спичка"
+        subj1.prop.remove("fireable")
+        subj1.prop.append("burning")
+        return [subj1,subj2]
+    if "fireable" in subj2.prop and "fire" in subj1.prop:
+        return
+    print("Действие невозможно")
+    return [subj1,subj2]
 
 
 
-def create_subject(id, description):
-   if id=="Свеча":
-       return Candle(description)
-   if id=="Спичка":
-       return Match(description)
-   if id=="Гобелен":
-       return Gobelin(description)
-
-
-
-# не нужен наверное False здесь
 def execute_action(action,subject):
    def look_at_this(subject):
        #print("я нахожусь в комнате "+ room.name)
@@ -53,3 +74,4 @@ def execute_action(action,subject):
 
    print("Вы ввели неверное действие. Повторите попытку.")
    return [False, subject]
+"""
