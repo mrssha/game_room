@@ -51,6 +51,7 @@ def create_rooms():
     room6.add_content(gobelin1)
     room4.add_content(match1)
     room1.add_content(candle1)
+    room1.add_content(gobelin2)
     return room2
 
 
@@ -76,10 +77,10 @@ def execute_command(command, room):
         if len(room.content)==0:
             print("В этой комнате нет ничего интересного")
         else:
-            list_content=""
+            print("\n"+"В этой комнате вы находите:")
             for subj in room.content.keys():
-                list_content= list_content + subj + ", "
-                print("В этой комнате вы находите:", list_content)
+                print(subj)
+        print("")
         return [False, room]
 
 
@@ -111,8 +112,7 @@ def execute_command(command, room):
         if name_subj1 in BASKET and name_subj2 in BASKET:
             subj1 = BASKET[name_subj1]
             if "fireable" in subj1.prop and "fire" in BASKET[name_subj2].prop:
-                desc = subj1.description
-                subj1.description = desc + " Горит."
+                subj1.description +=" Горит"
                 subj1.prop.remove("fireable")
                 subj1.prop.append("burning")
                 BASKET[name_subj1] = subj1
